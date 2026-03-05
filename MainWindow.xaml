@@ -1,0 +1,20 @@
+﻿<Window x:Class="prakt8_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prakt8_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="gridl">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="25" Content="Настройки" FontSize="10" Margin="5,0,0,0" Click="nas_click" x:Name="nas"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="25" Content="Сменить тему" FontSize="10" Margin="110,0,0,0" Visibility="Hidden" Click="tema_click" x:Name="tema"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="25" Content="Светлая" FontSize="10" Margin="215,0,0,0" Visibility="Hidden" Click="svet_click" x:Name="svet"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="25" Content="Темная" FontSize="10" Margin="320,0,0,0" Visibility="Hidden" Click="temn_click" x:Name="temn"/>
+    </Grid>
+</Window>
