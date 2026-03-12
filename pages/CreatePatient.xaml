@@ -26,18 +26,26 @@
             <TextBlock Text="Регистрация Пациента" FontSize="19" Margin="5 0 0 0"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="2">
-            <Label Content="Имя:"/>
-            <Label Content="Фамилия:"/>
-            <Label Content="Отчество:"/>
-            <Label Content="Номер телефона:"/>
+            <Label Content="Имя:" Margin="0 0 0 15"/>
+            <Label Content="Фамилия:" Margin="0 0 0 15"/>
+            <Label Content="Отчество:" Margin="0 0 0 17"/>
+            <Label Content="Номер телефона:" Margin="0 0 0 24"/>
             <Label Content="Дата рождения:"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="2">
             <TextBox x:Name="name" Margin="4" Text="{Binding Name, Mode=TwoWay}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er" Visibility="Hidden"/>
             <TextBox x:Name="lastname" Margin="4" Text="{Binding LastName, Mode=TwoWay}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er1" Visibility="Hidden"/>
             <TextBox x:Name="midname" Margin="4" Text="{Binding MiddleName, Mode=TwoWay}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er2" Visibility="Hidden"/>
             <TextBox x:Name="number" Margin="5" Text="{Binding Number, Mode=TwoWay}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er3" Visibility="Hidden"/>
             <DatePicker x:Name="bd" Margin="5" Text="{Binding Birthday, Mode=TwoWay}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er4" Visibility="Hidden"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="2">
             <Button Width="120" Height="20" Content="Зарегистрировать" HorizontalAlignment="Right" Margin="0 5 5 0" Click="Registration_Click"/>
             <Button Width="80" Height="20" Content="Назад" HorizontalAlignment="Right" Margin="0 5 5 0" Click="GoBack_Click" />
         </StackPanel>

@@ -43,10 +43,53 @@ namespace prakt8_wpf.pages
             allPatients = patients;
             DataContext = this;
 
-            if (SelectedPacient.Diagnosis == "")
+            if (SelectedPacient.LastAppointment == null || SelectedPacient.LastAppointment == "")
             {
-                MessageBox.Show("Это первый прием пациента!\nПоставьте сегодняшнюю дату для приема.");
+                last.Content = $"Это первый прием пациента!";
+            } else 
+            {
+                DateTime dt = DateTime.Parse(SelectedPacient.LastAppointment);
+                DateTime dt1 = DateTime.Now;
+                int day = dt.Day;
+                int month = dt.Month;
+
+                int dayto = dt1.Day;
+                int daymoth = dt1.Month;
+
+                int proshlo = 0;
+
+                if (daymoth == month && dayto == day)
+                {
+                    proshlo = 0;
+                }
+
+                if (daymoth == month)
+                {
+                    proshlo = dayto - daymoth;
+                }
+                else
+                {
+                    proshlo = (dayto - daymoth) + 30;
+                }
+
+                last.Content = $"Последняя встреча была {proshlo} дней";
+
             }
+
+            DateTime dtp = DateTime.Parse(SelectedPacient.Birthday);
+            int year = dtp.Year;
+
+            if (year < 2008)
+            {
+                SelectedPacient.Sover = "Совершеннолетний";
+            }
+            else
+            {
+                SelectedPacient.Sover = "Не совершеннолетний";
+            }
+
+            int pollet = 2026 - year;
+            bd.Content = $"Полных лет: {pollet} | {SelectedPacient.Sover}";
         }
 
         private void Change_Click(object sender, RoutedEventArgs e)
@@ -61,12 +104,39 @@ namespace prakt8_wpf.pages
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (diag.Text == "" || doc.Text == "" || rec.Text == "")
+            if (diag.Text == "")
             {
-                MessageBox.Show("Для сохранения все поля должны быть заполнены!");
+                diag.BorderBrush = Brushes.Red;
+                name_er1.Visibility = Visibility.Visible;
                 return;
-            } else
+            } else if (doc.Text == "")
             {
+                doc.BorderBrush = Brushes.Red;
+                name_er2.Visibility = Visibility.Visible;
+                return;
+            } else if (rec.Text == "")
+            {
+                rec.BorderBrush = Brushes.Red;
+                name_er3.Visibility = Visibility.Visible;
+                return;
+            } else if (date.Text == "")
+            {
+                date.BorderBrush = Brushes.Red;
+                name_er.Visibility = Visibility.Visible;
+                return;
+            }
+            else
+            {
+                diag.BorderBrush = Brushes.Black;
+                doc.BorderBrush = Brushes.Black;
+                rec.BorderBrush = Brushes.Black;
+                date.BorderBrush = Brushes.Black;
+
+                name_er.Visibility = Visibility.Hidden;
+                name_er1.Visibility = Visibility.Hidden;
+                name_er2.Visibility = Visibility.Hidden;
+                name_er3.Visibility = Visibility.Hidden;
+
                 patient.AppointmentStories.Add(new AppointmentStories
                 {
                     LastAppointment = newAppointmentStories.LastAppointment,
@@ -78,6 +148,10 @@ namespace prakt8_wpf.pages
                 string fileName = $"P_{patient.ID}.json";
                 patient.Diagnosis = newAppointmentStories.Diagnosis;
                 patient.LastDoctor = doctor._ID;
+                patient.LastAppointment = date.ToString();
+
+                last.Content = $"Последняя встреча была {date.ToString()}";
+
                 string jsonString = JsonSerializer.Serialize(patient);
                 File.WriteAllText(fileName, jsonString);
                 var index = allPatients.IndexOf(patient);

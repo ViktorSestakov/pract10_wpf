@@ -37,16 +37,58 @@ namespace prakt8_wpf.pages
         {
             Random rnd = new Random();
             
-            if (name.Text == "" || lastname.Text == "" || middlename.Text == "" || spec.Text == "" || pass.Text == "" || pass_rep.Text == "")
+            if (name.Text == "")
             {
-                MessageBox.Show("Должны быть заполнены все поля!");
+                name.BorderBrush = Brushes.Red;
+                name_er.Visibility = Visibility.Visible;
+                return;
+            } else if (lastname.Text == "")
+            {
+                lastname.BorderBrush = Brushes.Red;
+                name_er1.Visibility = Visibility.Visible;
+                return;
+            } else if (middlename.Text == "")
+            {
+                middlename.BorderBrush = Brushes.Red;
+                name_er2.Visibility = Visibility.Visible;
+                return;
+            } else if (spec.Text == "")
+            {
+                spec.BorderBrush = Brushes.Red;
+                name_er3.Visibility = Visibility.Visible;
+                return;
+            } else if (pass.Text == "")
+            {
+                pass.BorderBrush = Brushes.Red;
+                name_er4.Visibility = Visibility.Visible;
+                return;
+            } else if (pass_rep.Text == "")
+            {
+                pass_rep.BorderBrush = Brushes.Red;
+                name_er5.Visibility = Visibility.Visible;
                 return;
             } else if (pass.Text != pass_rep.Text)
             {
-                MessageBox.Show("Пароли не совпадают!");
+                name_er6.Visibility = Visibility.Visible;
                 return;
-            } else
+            }
+            else
             {
+                name.BorderBrush = Brushes.Black;
+                lastname.BorderBrush = Brushes.Black;
+                middlename.BorderBrush = Brushes.Black;
+                spec.BorderBrush = Brushes.Black;
+                pass.BorderBrush = Brushes.Black;
+                pass_rep.BorderBrush = Brushes.Black;
+
+                name_er.Visibility = Visibility.Hidden;
+                name_er1.Visibility = Visibility.Hidden;
+                name_er2.Visibility = Visibility.Hidden;
+                name_er3.Visibility = Visibility.Hidden;
+                name_er4.Visibility = Visibility.Hidden;
+                name_er5.Visibility = Visibility.Hidden;
+                name_er6.Visibility = Visibility.Hidden;
+
                 doctor._ID = rnd.Next(0, 10000);
                 try
                 {

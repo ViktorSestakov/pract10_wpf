@@ -18,29 +18,36 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="100"/>
 			<RowDefinition Height="25"/>
-			<RowDefinition Height="220"/>
+			<RowDefinition Height="4*"/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<StackPanel HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
 			<TextBlock Text="Регистрация пользователя" FontSize="19" Margin="5 0 0 0"/>
 		</StackPanel>
 		<StackPanel Grid.Column="1" Grid.Row="2">
-			<Label Content="Имя:"/>
-			<Label Content="Фамилия:"/>
-			<Label Content="Отчество:"/>
-			<Label Content="Специализация:"/>
-			<Label Content="Придумайте пароль:"/>
-			<Label Content="Подтвердите пароль:"/>
-		</StackPanel>
+            <Label Content="Имя:" Margin="0 0 0 15"/>
+            <Label Content="Фамилия:" Margin="0 0 0 18"/>
+            <Label Content="Отчество:" Margin="0 0 0 18"/>
+            <Label Content="Специализация:" Margin="0 0 0 15"/>
+            <Label Content="Придумайте пароль:" Margin="0 0 0 15"/>
+            <Label Content="Подтвердите пароль:"/>
+        </StackPanel>
 		<StackPanel Grid.Column="2" Grid.Row="2">
 			<TextBox x:Name="name" Margin="4.5" Text="{Binding Name, Mode=OneWayToSource}"/>
-			<TextBox x:Name="lastname" Margin="4.5" Text="{Binding LastName, Mode=OneWayToSource}"/>
-			<TextBox x:Name="middlename" Margin="4.5" Text="{Binding MiddleName, Mode=OneWayToSource}"/>
-			<TextBox x:Name="spec" Margin="4" Text="{Binding Specialisation, Mode=OneWayToSource}"/>
-			<TextBox x:Name="pass" Margin="4" Text="{Binding Password, Mode=OneWayToSource}"/>
-			<TextBox x:Name="pass_rep" Margin="4" Text="{Binding Password, Mode=OneWayToSource}"/>
-			<Button Width="120" Height="20" Content="Зарегистрироваться" HorizontalAlignment="Right" Margin="0 5 5 0" Click="Regestration_Click" />
-			<Button Width="80" Height="20" Content="Назад" HorizontalAlignment="Right" Margin="0 5 5 0" Click="GoBack_Click" />
-		</StackPanel>
-	</Grid>
+            <TextBlock x:Name="name_er" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="lastname" Margin="4.5" Text="{Binding LastName, Mode=OneWayToSource}"/>
+            <TextBlock x:Name="name_er1" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="middlename" Margin="4.5" Text="{Binding MiddleName, Mode=OneWayToSource}"/>
+            <TextBlock x:Name="name_er2" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="spec" Margin="4" Text="{Binding Specialisation, Mode=OneWayToSource}"/>
+            <TextBlock x:Name="name_er3" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="pass" Margin="4" Text="{Binding Password, Mode=OneWayToSource}"/>
+            <TextBlock x:Name="name_er4" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBox x:Name="pass_rep" Margin="4" Text="{Binding Password, Mode=OneWayToSource}"/>
+            <TextBlock x:Name="name_er5" Text="Поле не может быть пустым" Foreground="Red" Visibility="Hidden"/>
+            <TextBlock x:Name="name_er6" Text="Пароли не совпадают" Foreground="Red" Visibility="Hidden"/>
+        </StackPanel>
+        <Button Width="120" Height="20" Content="Зарегистрироваться" HorizontalAlignment="Right" Margin="0 5 5 0" Click="Regestration_Click" Grid.Column="1" Grid.Row="3"/>
+        <Button Width="80" Height="20" Content="Назад" HorizontalAlignment="Right" Margin="0 5 5 0" Click="GoBack_Click" Grid.Column="2" Grid.Row="3"/>
+    </Grid>
 </Page>

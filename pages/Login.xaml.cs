@@ -33,12 +33,21 @@ namespace prakt8_wpf.pages
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (id.Text == "" || pass.Text == "")
+            if (id.Text == "")
             {
-                MessageBox.Show("Должны быть заполнены все поля!");
+                name_er.Visibility = Visibility.Visible;
+                return;
+            } else if (pass.Text == "")
+            {
+                pass.BorderBrush = Brushes.Red;
+                name_er1.Visibility = Visibility.Visible;
                 return;
             } else
             {
+                pass.BorderBrush = Brushes.Gray;
+                name_er.Visibility = Visibility.Hidden;
+                name_er1.Visibility = Visibility.Hidden;
+
                 string[] mas = Directory.GetFiles("Doctor", $"D_*.json");
                 foreach (var i in mas)
                 {

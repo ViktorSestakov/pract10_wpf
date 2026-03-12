@@ -28,8 +28,11 @@
         <StackPanel Grid.Column="1" Grid.Row="3">
             <Label Content="Идентификатор:"/>
             <TextBox Margin="4.5" x:Name="id" Text="{Binding ID, Mode=OneWayToSource}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er" Visibility="Hidden"/>
             <Label Content="Пароль:"/>
             <TextBox Margin="4.5" x:Name="pass" Text="{Binding Password, Mode=OneWayToSource}"/>
+            <TextBlock Text="Поле не может быть пустым!" Foreground="Red" x:Name="name_er1" Visibility="Hidden"/>
+
             <Button Width="60" Height="20" Content="Войти" HorizontalAlignment="Right" Margin="0 5 5 0" Click="Login_Click" />
             <Button Width="130" Height="20" Content="Зарегистрироваться" HorizontalAlignment="Right" Margin="0 5 5 0" Click="Redistr_Click" />
         </StackPanel>
